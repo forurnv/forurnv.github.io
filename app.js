@@ -9,7 +9,7 @@ fetch (url)
 		const y = x.results
 		console.log (y)
 
-	// const abilities = x.abilities[0].ability
+	const abilities = x.abilities[0].abilities
 	debugger
 })
 
