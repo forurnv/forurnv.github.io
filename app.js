@@ -1,27 +1,58 @@
 
-
+function getAllPokemon() {
 const url = "https://pokeapi.co/api/v2/pokemon/"
 fetch (url)
 	.then(x => x.json())
 	.then(x => {
-	// debugger
-
-		keys.forEach(function(x) {
-			const values = results[x]
-			updateDisplay(values.advice)
-		})
-
-
-
-
-		const y = x.results
-		console.log (y)
-
-	// const abilities = x.abilities[0].ability
-	// debugger
+	x.results.forEach(pokemon => writeToPage(pokemon.name,pokemon.url)) 
+		//console.log (x.results)
 })
+}
+
+function getPokemon(purl) {
+	console.log("getPokemon() called with input: "+purl);
+//const url = "https://pokeapi.co/api/v2/pokemon/"+pid+"/"
+const url = purl;
+fetch (url)
+	.then(x => x.json())
+	.then(x => {
+	console.log(x)
+	// TODO: Build a div containing important fields about this pokemon.
+	//x.results.forEach(pokemon => writeToPage(pokemon.name)) 
+//		console.log (x.results)
+})
+}
 
 
+
+function writeToPage(pname, purl) {
+  const el = document.createElement('button')
+  el.style = `
+    padding: 20px 40px;
+    border-radius: 10px;
+    background: #222;
+    color: white;
+    font-family: sans-serif;
+    display: inline-block;
+  `
+  el.textContent = pname
+	//document.body.appendChild(el)
+	
+	//el.textContent = el.textContent + purl
+	el.addEventListener('click',function() {
+		getPokemon(purl)
+	});
+	document.body.appendChild(el)
+// TODO: Bind callback with URL to button
+// Eg. When clicked, it should call getPokemon(purl);
+}
+
+// const url = 'https://swapi.co/api/people/1'
+// const invalidUrl = 'https://swapi.co/api/NOT-VALID'
+
+// fetch(url).then(x => {
+//   return x.json()
+// })
 
 
 
@@ -32,7 +63,7 @@ fetch (url)
 	
 // });
 
-
+getAllPokemon()
 
 
 
