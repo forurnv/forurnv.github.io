@@ -5,18 +5,22 @@ fetch (url)
 	.then(x => x.json())
 	.then(x => {
 	x.results.forEach(pokemon => writeToPage(pokemon.name,pokemon.url)) 
-		//console.log (x.results)
+
+		console.log (x.results[0].url)
+	
 })
 }
 
 function getPokemon(purl) {
-	console.log("getPokemon() called with input: "+purl);
-//const url = "https://pokeapi.co/api/v2/pokemon/"+pid+"/"
+	writeToPage2("getPokemon() called with input: "+purl);
+	// writeToPage2(x.id)
+	console.log(purl)
+// const url = "https://pokeapi.co/api/v2/pokemon/"+pid+"/"
 const url = purl;
 fetch (url)
 	.then(x => x.json())
 	.then(x => {
-	console.log(x)
+	// console.log(x)
 	// TODO: Build a div containing important fields about this pokemon.
 	//x.results.forEach(pokemon => writeToPage(pokemon.name)) 
 //		console.log (x.results)
@@ -28,15 +32,16 @@ fetch (url)
 function writeToPage(pname, purl) {
   const el = document.createElement('button')
   el.style = `
-    padding: 20px 40px;
-    border-radius: 10px;
+    padding: 15px 30px;
+		border-radius: 10px;
+		margin: .4em;
     background: #222;
     color: white;
     font-family: sans-serif;
     display: inline-block;
   `
   el.textContent = pname
-	//document.body.appendChild(el)
+	// document.body.appendChild(el)
 	
 	//el.textContent = el.textContent + purl
 	el.addEventListener('click',function() {
@@ -46,6 +51,47 @@ function writeToPage(pname, purl) {
 // TODO: Bind callback with URL to button
 // Eg. When clicked, it should call getPokemon(purl);
 }
+
+
+function writeToPage2(pname, purl) {
+	const el = document.createElement('a')
+	Object.keys(x.results).forEach((key) => {
+		el.setAttribute("href", )
+		console.log (x.results[key].url)
+
+	})
+
+  el.style = `
+    padding: 15px 30px;
+		border-radius: 10px;
+		margin: 3px;
+    background: red;
+    color: white;
+    font-family: sans-serif;
+    display: inline-block;
+  `
+  // el.textContent = pname
+	// document.body.appendChild(el)
+	
+	el.textContent = el.textContent + purl
+	// el.addEventListener('click',function() {
+	// 	getPokemon(purl)
+	// });
+	header.appendChild(el)
+// TODO: Bind callback with URL to button
+// Eg. When clicked, it should call getPokemon(purl);
+}
+
+
+
+
+
+
+
+
+
+getAllPokemon()
+
 
 // const url = 'https://swapi.co/api/people/1'
 // const invalidUrl = 'https://swapi.co/api/NOT-VALID'
@@ -62,10 +108,6 @@ function writeToPage(pname, purl) {
 // array.forEach(element => {
 	
 // });
-
-getAllPokemon()
-
-
 
 
 
