@@ -6,13 +6,13 @@ fetch (url)
 	.then(x => {
 	x.results.forEach(pokemon => writeToPage(pokemon.name,pokemon.url)) 
 
-		console.log (x.results[0].url)
+		// writeToPage(x.results[0].url)
 	
 })
 }
 
 function getPokemon(purl) {
-	writeToPage2("getPokemon() called with input: "+purl);
+	console.log("getPokemon() called with input: "+purl);
 	// writeToPage2(x.id)
 	console.log(purl)
 // const url = "https://pokeapi.co/api/v2/pokemon/"+pid+"/"
@@ -32,12 +32,13 @@ fetch (url)
 function writeToPage(pname, purl) {
   const el = document.createElement('button')
   el.style = `
-    padding: 15px 30px;
+    padding: 1em 1em;
 		border-radius: 10px;
-		margin: .4em;
-    background: #222;
-    color: white;
-    font-family: sans-serif;
+		margin: .3em;
+		background: black;
+		opacity: .9;
+    color: red;
+		font-size: 2em;
     display: inline-block;
   `
   el.textContent = pname
@@ -53,11 +54,12 @@ function writeToPage(pname, purl) {
 }
 
 
-function writeToPage2(pname, purl) {
+function writeToPage2(purl) {
 	const el = document.createElement('a')
-	Object.keys(x.results).forEach((key) => {
-		el.setAttribute("href", )
-		console.log (x.results[key].url)
+	Object.keys(purl).forEach((key) => {
+		el.setAttribute("href", purl[key].url)
+		console.log (purl[key].url)
+		el.textContent = pname
 
 	})
 
@@ -68,15 +70,16 @@ function writeToPage2(pname, purl) {
     background: red;
     color: white;
     font-family: sans-serif;
-    display: inline-block;
+		display: inline-block;
+		z-index:1;
   `
   // el.textContent = pname
 	// document.body.appendChild(el)
 	
 	el.textContent = el.textContent + purl
-	// el.addEventListener('click',function() {
-	// 	getPokemon(purl)
-	// });
+	el.addEventListener('click',function() {
+		getPokemon(purl)
+	});
 	header.appendChild(el)
 // TODO: Bind callback with URL to button
 // Eg. When clicked, it should call getPokemon(purl);
