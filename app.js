@@ -30,16 +30,9 @@ fetch (url)
 
 
 function writeToPage(pname, purl) {
-  const el = document.createElement('button')
-  el.style = `
-    padding: 15px 30px;
-		border-radius: 10px;
-		margin: .4em;
-    background: #222;
-    color: white;
-    font-family: sans-serif;
-    display: inline-block;
-  `
+	const el = document.createElement('button')
+	el.id='pokemon'
+
   el.textContent = pname
 	// document.body.appendChild(el)
 	
@@ -47,9 +40,10 @@ function writeToPage(pname, purl) {
 	el.addEventListener('click',function() {
 		getPokemon(purl)
 	});
-	document.body.appendChild(el)
 // TODO: Bind callback with URL to button
 // Eg. When clicked, it should call getPokemon(purl);
+	let locate = document.querySelector("#section1")
+	locate.appendChild(el)
 }
 
 
@@ -82,15 +76,9 @@ function writeToPage2(pname, purl) {
 // Eg. When clicked, it should call getPokemon(purl);
 }
 
-
-
-
-
-
-
-
-
 getAllPokemon()
+
+
 
 
 // const url = 'https://swapi.co/api/people/1'
